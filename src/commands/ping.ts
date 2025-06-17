@@ -1,4 +1,4 @@
-import { CommandInteraction, PermissionFlags, SlashCommandBuilder } from "discord.js"
+import { CommandInteraction, MessageFlags, PermissionFlags, SlashCommandBuilder } from "discord.js"
 
 export default {
     data: new SlashCommandBuilder()
@@ -6,6 +6,9 @@ export default {
         .setDescription("replys with pong!"),
     
     async execute(interaction: CommandInteraction) {
-        await interaction.reply("Pong")
+        await interaction.reply({
+            content: "Pong",
+            flags: MessageFlags.Ephemeral
+        })
     }
 }
